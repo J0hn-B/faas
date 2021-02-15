@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: open-faas
+  namespace: argocd
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  project: k8s-config
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: k8s/helm-charts/openfaas
+    repoURL: https://github.com/J0hn-B/faas.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
