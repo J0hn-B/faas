@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-bootstrap
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: k8s-config
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: k8s/k8s-bootstrap
+    repoURL: https://github.com/J0hn-B/faas.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
