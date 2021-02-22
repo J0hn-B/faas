@@ -28,16 +28,21 @@ Log into your OpenFaaS gateway:
 
 > Functions can be invoked via a GET or POST method only.
 
+// create new function:  
 faas-cli new --lang dockerfile long-task --prefix="your_docker_registry_here"
 
+// build and deploy function:  
 faas-cli up -f hello-openfaas.yml # build --> push --> deploy, in one command
 
-## Example
+## Deploy an example function
 
-faas-cli new --lang python3 astronaut-finder --prefix="your_docker_registry_here"
+A basic function, using the go template.  
+It returns time, date and the hostname of the container.
 
-faas-cli build -f ./astronaut-finder.yml
+`cd faas/functions`
 
-faas-cli push -f ./astronaut-finder.yml
+`faas-cli up -f first.yml`
 
-faas-cli up -f astronaut-finder.yml
+Check your OpenFaas Web UI. Invoke function and check the result.
+
+`kubectl get deployment first -n openfaas-fn`
