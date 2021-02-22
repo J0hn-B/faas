@@ -7,3 +7,5 @@ functions:
     lang: go
     handler: ./first
     image: johnb79/first:latest
+    build_args:
+      GO111MODULE: on

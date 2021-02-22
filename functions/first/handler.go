@@ -3,7 +3,6 @@ package function
 import (
 	"fmt"
 	"os"
-	"os/user"
 	"time"
 )
 
@@ -11,9 +10,6 @@ import (
 func Handle(req []byte) string {
 	GetTime()
 	GetOs()
-	GetID()
-	CurrentUser()
-	//GetEnvVars()
 	return fmt.Sprintf("This function returns container information. %s", string(req))
 }
 
@@ -33,35 +29,3 @@ func GetOs() {
 		panic(err)
 	}
 }
-
-// GetID returns the numeric effective group and user id of the caller
-func GetID() {
-	GroupID := os.Getegid()
-	UserID := os.Geteuid()
-	fmt.Println("Group ID is:", GroupID, "User ID is:", UserID)
-}
-
-// CurrentUser gets current user info
-func CurrentUser() {
-	currentUser, err := user.Current()
-	if err == nil {
-		fmt.Println("Username:", currentUser.Username)
-		fmt.Println("HomeDir:", currentUser.HomeDir)
-	} else {
-		panic(err)
-	}
-
-}
-
-// // GetEnvVars returns the environment variables
-// func GetEnvVars() {
-// 	// get all env vars
-// 	var env []string = os.Environ()
-// 	fmt.Println("Environment Variables:")
-// 	//iterate over each variable
-// 	for index, variable := range env {
-// 		nameVal := strings.Split(variable, "=")
-
-// 		fmt.Printf("[%d] %v => %v\n", index, nameVal[0], nameVal[1])
-// 	}
-// }
