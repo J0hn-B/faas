@@ -2,7 +2,7 @@
 
 Create an Openfaas gitops playground for testing locally with:  
 [k3d](https://k3d.io/)  
-[ArgoCD]https://argo-cd.readthedocs.io/en/stable/)  
+[ArgoCD](https://argo-cd.readthedocs.io/en/stable/)  
 [Openfaas](https://www.openfaas.com/)
 
 Create a 3 node K8s cluster with k3d:  
