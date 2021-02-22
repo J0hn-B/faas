@@ -1,4 +1,9 @@
-# OpenFaas install
+# OpenFaas playground
+
+Create an Openfaas gitops playground for testing locally with:  
+[k3d](https://k3d.io/)
+ArgoCD
+Openfaas
 
 Create a 3 node K8s cluster with k3d:  
 `k3d cluster create multiserver --servers 3`
