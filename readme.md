@@ -9,10 +9,10 @@ Create a 3 node K8s cluster with k3d:
 `k3d cluster create multiserver --servers 1 --agents 2`
 
 Install ArgoCD:  
-`cd scripts && ./argocd_install.sh` --> Follow the script and login to ArgoCD UI.
+`cd scripts && chmod +x . && ./argocd_install.sh` --> Follow the script and login to ArgoCD UI.
 
 Prepare the cluster with Helm Charts:  
-`kubectl apply -f k8s/argo_config/` --> App of Apps pattern, check ArgoCD UI
+`cd .. && kubectl apply -f k8s/argo_config/` --> App of Apps pattern, check ArgoCD UI
 
 Wait for OpenFaas to complete installation.  
 `kubectl get deployment gateway -n openfaas --watch`
