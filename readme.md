@@ -26,15 +26,7 @@ Log into your OpenFaaS gateway:
 
 `faas-cli login --username admin --password $PASS`
 
-## OpenFaas How to
-
 > Functions can be invoked via a GET or POST method only.
-
-// create new function:  
-faas-cli new --lang dockerfile long-task --prefix="your_docker_registry_here"
-
-// build and deploy function:  
-faas-cli up -f hello-openfaas.yml # build --> push --> deploy, in one command
 
 ## Deploy an example function
 
