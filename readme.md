@@ -12,7 +12,7 @@ Install ArgoCD:
 `cd scripts && ./argocd_install.sh` --> Follow the script and login to ArgoCD UI.
 
 Prepare the cluster with Helm Charts:  
-`kubectl apply -f k8s/argo_config/` --> App of Apps patter, check ArgoCD UI
+`kubectl apply -f k8s/argo_config/` --> App of Apps pattern, check ArgoCD UI
 
 Wait for OpenFaas to complete installation.  
 `kubectl get deployment gateway -n openfaas --watch`
@@ -21,8 +21,8 @@ Wait for OpenFaas to complete installation.
 
 Log into your OpenFaaS gateway:  
 `kubectl port-forward svc/gateway -n openfaas 8080:8080`  
-`kubectl get secret -n openfaas basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode; echo`  
-`faas-cli login --username admin --password your_password_here`
+`PASS=$(kubectl get secret -n openfaas basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode;)`  
+`faas-cli login --username admin --password $PASS`
 
 ## OpenFaas How to
 
